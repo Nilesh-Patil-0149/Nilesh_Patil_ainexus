@@ -1,2 +1,2 @@
 # Nilesh_Patil_ainexus
-clone edit add  comit pull 
+clone edit add  comit push
