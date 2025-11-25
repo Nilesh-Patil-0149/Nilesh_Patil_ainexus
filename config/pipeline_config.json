@@ -1,0 +1,24 @@
+
+
+{
+  "tata": {
+    "pipeline_name": "pipelines/tata/pipeline.yaml",
+    "config_path": "customers/tata/tata_silver_config.json"
+  },
+  "hyundai": {
+    "pipeline_name": "pipelines/hyundai/pipeline.yaml",
+    "config_path": "customers/hyundai/hyundai_silver_config.json"
+  },
+  "volkswagen": {
+    "pipeline_name": "pipelines/volkswagen/pipeline.yaml",
+    "config_path": "customers/volkswagen/volkswagen_silver_config.json"
+  },
+  "bmw": {
+    "pipeline_name": "pipelines/bmw/pipeline.yaml",
+    "config_path": "customers/bmw/bmw_silver_config.json"
+  },
+  "default": {
+    "pipeline_name": "pipelines/tata/pipeline.yaml",
+    "config_path": "customers/tata/tata_silver_config.json"
+  }
+}

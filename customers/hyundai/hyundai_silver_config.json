@@ -1,0 +1,58 @@
+{
+  "column_mapping": {
+    "OrderNumber": "booking_id",
+    "Client": "customer_name",
+    "Brand": "brand",
+    "ModelName": "model",
+    "TrimLevel": "variant",
+    "BodyType": "body_type",
+    "CargoType": "cargo_type",
+    "POL": "pol",
+    "POD": "pod",
+    "DispatchMode": "mode",
+    "VehicleLength_m": "length_m",
+    "VehicleWidth_m": "width_m",
+    "VehicleHeight_m": "height_m",
+    "GrossWeightKG": "weight_kg",
+    "VolumeCBM": "cbm",
+    "Units": "units",
+    "ProductionDate": "production_date",
+    "RequestedShipDate": "requested_ship_date",
+    "PlannedVessel": "vessel_name",
+    "Comments": "comments"
+  },
+
+  "dimension_columns": {
+    "length": "length_m",
+    "width": "width_m",
+    "height": "height_m",
+    "cbm": "cbm",
+    "sqm": null,
+    "units": "units"
+  },
+
+  "pol_column": "pol",
+  "pod_column": "pod",
+  "model_column": "model",
+
+  "dtype_mapping": {
+    "length_m": "float",
+    "width_m": "float",
+    "height_m": "float",
+    "weight_kg": "float",
+    "cbm": "float",
+    "units": "int",
+    "production_date": "string",
+    "requested_ship_date": "string",
+    "vessel_name": "string"
+  },
+
+  "value_replacements": {
+    "pol": {},
+    "pod": {}
+  },
+
+  "pol_pod_mapping_file": "config/pol_pod_mapping.csv",
+  "avg_cbm_mapping_file": "config/avg_cbm_mapping.csv",
+  "avg_sqm_mapping_file": "config/avg_sqm_mapping.csv"
+}

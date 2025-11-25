@@ -1,0 +1,25 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+
+name: bmw_silver_transform
+display_name: BMW Silver Transform
+type: command
+
+inputs:
+  customer_name:
+    type: string
+  bronze_path:
+    type: uri_folder
+
+outputs:
+  silver_output:
+    type: uri_folder
+
+code: .  # folder where bmw_transform.py lives
+
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu:1
+
+command: >
+  python bmw_transform.py
+  --customer_name ${{inputs.customer_name}}
+  --bronze_path ${{inputs.bronze_path}}
+  --silver_output ${{outputs.silver_output}}

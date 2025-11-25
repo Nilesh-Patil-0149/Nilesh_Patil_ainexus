@@ -1,0 +1,19 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+
+name: bmw_silver_pipeline
+display_name: BMW Silver Pipeline
+
+inputs:
+  customer_name:
+    type: string
+  bronze_path:
+    type: uri_folder
+
+jobs:
+  silver_step:
+    type: command
+    component: ../../customers/bmw/component.yaml
+    inputs:
+      customer_name: ${{parent.inputs.customer_name}}
+      bronze_path: ${{parent.inputs.bronze_path}}
