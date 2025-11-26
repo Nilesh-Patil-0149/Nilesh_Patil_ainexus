@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
+
+permissions:
+  id-token: write      # IMPORTANT
+  contents: read
 
 permissions:
   id-token: write      # required for azure/login OIDC
@@ -15,31 +18,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+<<<<<<< HEAD
     # 1. Checkout repo
     - name: Checkout code
       uses: actions/checkout@v4
 
     # 2. Azure login using federated identity
+=======
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+>>>>>>> 07a891e34a93b31ee8b6e7d51b3ae5e692feb7d0
     - name: Azure Login using Federated Identity
       uses: azure/login@v1
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+<<<<<<< HEAD
 
     # 3. Install Azure ML extension
+=======
+        allow-no-subscriptions: false
+        enable-AzPSSession: false
+
+>>>>>>> 07a891e34a93b31ee8b6e7d51b3ae5e692feb7d0
     - name: Install Azure ML extension
       run: |
         az extension add -n ml -y
         az version
 
+<<<<<<< HEAD
     # 4. (Optional) Debug repo structure
     - name: Debug repo contents
+=======
+    - name: Debug current directory
+>>>>>>> 07a891e34a93b31ee8b6e7d51b3ae5e692feb7d0
       run: |
-        echo "Repo structure:"
+        echo "Listing repo files..."
         ls -R .
 
+<<<<<<< HEAD
     # 5. Submit orchestrator job
+=======
+>>>>>>> 07a891e34a93b31ee8b6e7d51b3ae5e692feb7d0
     - name: Deploy Orchestration Pipeline
       run: |
         az ml job create \
