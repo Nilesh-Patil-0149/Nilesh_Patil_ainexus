@@ -1,7 +1,7 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 type: command
 
-name: orchestrator_job_${{ run_id }}
+name: orchestrator_job
 display_name: File Orchestrator
 experiment_name: routing_etl
 

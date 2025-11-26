@@ -43,6 +43,7 @@ jobs:
       run: |
         az ml job create \
           --file orchestration/orch_job.yaml \
+          --name orchestrator_job_${{ github.run_id }} \
           --set environment_variables.FILE_NAME="testfile.csv" \
           --resource-group d-ci-logistics_group \
           --workspace-name shippingml
