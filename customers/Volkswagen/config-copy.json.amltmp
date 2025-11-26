@@ -1,8 +1,0 @@
-{
-    "file_processing_path": "shippingproject/customers/volkswagen",
-    "schema_version": "v1",
-    "additional_params": {
-        "dedupe": true,
-        "normalize_dates": true
-    }
-}
