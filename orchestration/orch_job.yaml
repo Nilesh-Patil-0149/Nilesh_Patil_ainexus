@@ -1,22 +1,23 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 type: command
 
-name: orchestrator_job_${{ github.run_id }}    # 🔥 Dynamic name
+name: orchestrator_job_${{ run_id }}
 display_name: File Orchestrator
 experiment_name: routing_etl
 
+# Upload entire repo as job code
 code: .
 
-command: >-
-  python orchestration/orch.py
-  --file_name ${{inputs.file_name}}
+# Command to run orch.py with environment variable
+command: >
+  python orchestration/orch.py --file_name $FILE_NAME
 
 environment:
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 compute: azureml:nileshkcpcluster
 
-inputs:
-  file_name:
-    type: string
-    default: sample.csv
+# 🔥 Pass file_name here — allowed by CommandJob schema
+environment_variables:
+  FILE_NAME: ""
+
