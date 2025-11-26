@@ -5,19 +5,19 @@ name: orchestrator_job
 display_name: File Orchestrator
 experiment_name: routing_etl
 
-# Upload entire repo as job code
+# Upload the entire repo to AML compute
 code: .
 
-# Command to run orch.py with environment variable
 command: >
-  python orchestration/orch.py --file_name $FILE_NAME
+  python orchestration/orch.py
+  --file_name ${{inputs.file_name}}
 
 environment:
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 compute: azureml:nileshkcpcluster
 
-# 🔥 Pass file_name here — allowed by CommandJob schema
-environment_variables:
-  FILE_NAME: ""
+inputs:
+  file_name:
+    type: string
 
