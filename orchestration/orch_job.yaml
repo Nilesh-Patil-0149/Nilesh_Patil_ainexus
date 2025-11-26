@@ -5,19 +5,19 @@ name: orchestrator_job
 display_name: File Orchestrator
 experiment_name: routing_etl
 
-# Upload the entire repo to AML compute
+# Upload your whole repo to the job
 code: .
 
+# Run the orchestrator script, taking file name from env var
 command: >
   python orchestration/orch.py
-  --file_name ${{inputs.file_name}}
+  --file_name $FILE_NAME
 
 environment:
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 compute: azureml:nileshkcpcluster
 
-inputs:
-  file_name:
-    type: string
-
+# 🔥 We pass the file name as an environment variable, NOT as an input
+environment_variables:
+  FILE_NAME: ""
