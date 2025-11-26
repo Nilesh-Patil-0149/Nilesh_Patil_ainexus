@@ -1,4 +1,4 @@
-name: Deploy Orchestration Pipeline 
+name: Deploy Orchestration Pipeline
 
 on:
   push:
@@ -13,14 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # 1. Checkout repository
     - name: Checkout code
       uses: actions/checkout@v4
 
+    # 2. 🔍 DEBUG REPO CONTENTS (PUT YOUR CODE HERE)
+    - name: Debug repo contents
+      run: |
+        echo "------ REPOSITORY STRUCTURE ------"
+        ls -R .
+        echo "----------------------------------"
+
+    # 3. Install Azure ML extension
     - name: Install Azure ML extension
       run: |
         az extension add -n ml --yes
         az --version
 
+    # 4. Azure Login using Federated Identity
     - name: Azure Login using Federated Identity
       uses: azure/login@v1
       with:
@@ -28,10 +38,10 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+    # 5. Submit Azure ML job
     - name: Deploy Orchestration Pipeline
       run: |
         az ml job create \
-        --file orchestration/orch_job.yaml \
-        --set environment_variables.FILE_NAME="volkswagen_file.csv" \
-        --resource-group d-ci-logistics_group \
-        --workspace-name shippingml
+          --file orchestration/orch_job.yaml \
+          --resource-group d-ci-logistics_group \
+          --workspace-name shippingml
