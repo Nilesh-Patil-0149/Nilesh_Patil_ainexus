@@ -1,19 +1,19 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 type: command
 
-name: file_orchestrator
+name: orchestrator_job
 display_name: File Orchestrator
-experiment_name: file-routing
+experiment_name: routing_etl
 
-code: .  # folder where orch.py + config.json + config/pipeline_config.json live
+# Pull the entire repo so orch.py+configs are available
+code: git://github.com/Nilesh-Patil-0149/Nilesh_Patil_ainexus#main
 
 command: >-
-  python orch.py
+  python orchestration/orch.py
   --file_name ${{inputs.file_name}}
 
 environment:
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
-  # or point to your own env
 
 compute: azureml:nileshkcpcluster
 

@@ -14,6 +14,9 @@ outputs:
   silver_output:
     type: uri_folder
 
+# Pull Hyundai folder only
+code: git://github.com/Nilesh-Patil-0149/Nilesh_Patil_ainexus#main:customers/hyundai
+
 jobs:
   silver_step:
     type: command
