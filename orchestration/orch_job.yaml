@@ -5,18 +5,16 @@ name: orchestrator_job
 display_name: File Orchestrator
 experiment_name: routing_etl
 
-# Pull the entire repo so orch.py+configs are available
-code: git://github.com/Nilesh-Patil-0149/Nilesh_Patil_ainexus#main
+code: .   # Upload current repo folder
 
-command: >-
-  python orchestration/orch.py
-  --file_name ${{inputs.file_name}}
+command: >
+  python orchestration/orch.py --file_name $FILE_NAME
 
 environment:
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 compute: azureml:nileshkcpcluster
 
-inputs:
-  file_name:
-    type: string
+# Simple string → use environment variable instead of AzureML input
+environment_variables:
+  FILE_NAME: ""
