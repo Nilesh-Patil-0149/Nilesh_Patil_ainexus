@@ -1,20 +1,22 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 type: command
 
-name: orchestrator_job
+name: orchestrator_job_${{ github.run_id }}    # 🔥 Dynamic name
 display_name: File Orchestrator
 experiment_name: routing_etl
 
-code: .   # Upload current repo folder
+code: .
 
-command: >
-  python orchestration/orch.py --file_name $FILE_NAME
+command: >-
+  python orchestration/orch.py
+  --file_name ${{inputs.file_name}}
 
 environment:
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 compute: azureml:nileshkcpcluster
 
-# Simple string → use environment variable instead of AzureML input
-environment_variables:
-  FILE_NAME: ""
+inputs:
+  file_name:
+    type: string
+    default: sample.csv
