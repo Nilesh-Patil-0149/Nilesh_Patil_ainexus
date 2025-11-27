@@ -1,0 +1,104 @@
+{
+	"name": "DelimitedText2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "landing_zone",
+				"container": "shippingproject"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "RefNo",
+				"type": "String"
+			},
+			{
+				"name": "OEM",
+				"type": "String"
+			},
+			{
+				"name": "Brand",
+				"type": "String"
+			},
+			{
+				"name": "Series",
+				"type": "String"
+			},
+			{
+				"name": "Grade",
+				"type": "String"
+			},
+			{
+				"name": "BodyStyle",
+				"type": "String"
+			},
+			{
+				"name": "CargoKind",
+				"type": "String"
+			},
+			{
+				"name": "POLCode",
+				"type": "String"
+			},
+			{
+				"name": "PODCode",
+				"type": "String"
+			},
+			{
+				"name": "ModeType",
+				"type": "String"
+			},
+			{
+				"name": "Len_m",
+				"type": "String"
+			},
+			{
+				"name": "Wid_m",
+				"type": "String"
+			},
+			{
+				"name": "Ht_m",
+				"type": "String"
+			},
+			{
+				"name": "Weight",
+				"type": "String"
+			},
+			{
+				"name": "CBMQty",
+				"type": "String"
+			},
+			{
+				"name": "Qty",
+				"type": "String"
+			},
+			{
+				"name": "ProdOn",
+				"type": "String"
+			},
+			{
+				"name": "ETA",
+				"type": "String"
+			},
+			{
+				"name": "Vessel",
+				"type": "String"
+			},
+			{
+				"name": "Remarks",
+				"type": "String"
+			}
+		]
+	}
+}
